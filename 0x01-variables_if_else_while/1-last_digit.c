@@ -12,9 +12,9 @@ int main(void)
 {
 	int n;
 	int num;
+
 	srand(time(0));
 	num = rand() - RAND_MAX / 2;
-
 	n = num % 10;
 
 	if (n == 0)
