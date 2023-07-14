@@ -23,8 +23,7 @@ int main(void)
 	}
 	else if (n > 5)
 	{
-		printf("Last digit of %d is %d and is greater 5", n, last_num);
-		printf("and not 0\n");
+		printf("Last digit of %d is %d and is greater 5\n", n, last_num);
 	}
 	else
 	{
