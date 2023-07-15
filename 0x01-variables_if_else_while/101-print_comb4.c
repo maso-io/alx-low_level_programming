@@ -27,15 +27,14 @@ int main(void)
 					putchar(i);
 					putchar(j);
 					putchar(k);
+					putchar(',');
+					putchar(' ');
 				}
 				if (i == 56 && j == 57 && k == 57)
 				{
 					putchar('\n');
 					continue;
 				}
-				putchar(',');
-				putchar(' ');
-
 			}
 		}
 	}
