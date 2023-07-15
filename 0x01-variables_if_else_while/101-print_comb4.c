@@ -22,7 +22,7 @@ int main(void)
 					continue;
 				}
 
-				if (i > j && i > k)
+				if (i < j && j < k)
 				{
 					putchar(i);
 					putchar(j);
