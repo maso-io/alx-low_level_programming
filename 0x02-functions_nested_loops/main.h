@@ -9,3 +9,6 @@ void print_alphabet_x10(void);
 
 /* prototype that checks in c is lower case */
 int _islower(int c);
+
+/* prototype to check if c is a letter */
+int _isalpha(int c);
