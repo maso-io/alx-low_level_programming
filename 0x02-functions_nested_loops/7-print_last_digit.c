@@ -1,4 +1,3 @@
-#include<limits.h>
 #include <stdlib.h>
 #include "main.h"
 
@@ -11,8 +10,7 @@
 
 int print_last_digit(int n)
 {
-	int tmp_raw = abs(n);
-	int tmp = tmp_raw % 10;
+	int tmp = abs(tmp) % 10;
 
 	_putchar(tmp);
 	return (tmp);
