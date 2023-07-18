@@ -19,3 +19,5 @@ int print_sign(int n);
 /* function Prototype that computes the absolute value of an integer.*/
 int _abs(int);
 
+/* function prototype that prints last digit of given number */
+int print_last_digit(int);
