@@ -15,3 +15,7 @@ int _isalpha(int c);
 
 /* function Prototype that prints the sign of a number.*/
 int print_sign(int n);
+
+/* function Prototype that computes the absolute value of an integer.*/
+int _abs(int);
+
