@@ -21,3 +21,6 @@ int _abs(int);
 
 /* function prototype that prints last digit of given number */
 int print_last_digit(int);
+
+/* function that prints every minute of the day of Jack Bauer */
+void jack_bauer(void);
