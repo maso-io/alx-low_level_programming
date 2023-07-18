@@ -12,3 +12,6 @@ int _islower(int c);
 
 /* prototype to check if c is a letter */
 int _isalpha(int c);
+
+/* function Prototype that prints the sign of a number.*/
+int print_sign(int n);
