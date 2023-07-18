@@ -6,3 +6,6 @@ void print_alphabet(void);
 
 /* prototype to print [a-z] x10 times */
 void print_alphabet_x10(void);
+
+/* prototype that checks in c is lower case */
+int _islower(int c);
