@@ -2,10 +2,12 @@
 #include <string.h>
 
 /**
-  * main - Prints _putchar to std output
-  *
-  * Return : 1 (success)
-  */
+ * main - Uses _putchar to print to std output
+ *
+ * Description: uses the main.h file and a for loop to print an array of
+ * character to the screen.
+ * Return: 0 (success)
+ */
 
 int main(void)
 {
@@ -16,5 +18,5 @@ int main(void)
 	{
 		_putchar(word[i]);
 	}
-	return (1);
+	return (0);
 }
