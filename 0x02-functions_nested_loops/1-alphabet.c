@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * print_alphabet - prints the alphanets to std out
  *
@@ -15,7 +16,7 @@ void print_alphabet(void)
 		 'z', '\n'
 	};
 
-	for (i = 0; i < 25; i++)
+	for (i = 0; i < 27; i++)
 	{
 		_putchar(alphabets[i]);
 	}
