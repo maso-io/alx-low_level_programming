@@ -24,3 +24,20 @@ int print_last_digit(int);
 
 /* function that prints every minute of the day of Jack Bauer */
 void jack_bauer(void);
+
+/* prototype function that prints every minute of the day of Jack Bauer, 
+   starting from 00:00 to 23:59. */
+void jack_bauer(void);
+
+/* Prototype function that prints the 9 times table, starting with 0.*/
+void times_table(void);
+
+/* prototype of function that adds two integers and returns the result. */
+int add(int, int);
+
+/* a prototype function that prints all natural numbers from n to 98, 
+   followed by a new line.*/
+void print_to_98(int n);
+
+/* Prototype of function that prints the n times table, starting with 0. */
+void print_times_table(int n);
