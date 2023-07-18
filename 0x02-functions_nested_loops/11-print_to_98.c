@@ -42,8 +42,10 @@ void print_to_98(int n)
 		tmp++;
 		/* check whether to print last comma */
 		if (tmp > 98)
+		{
+			_putchar('\n');
 			continue;
-
+		}
 		_putchar(',');
 		_putchar(' ');
 	}
