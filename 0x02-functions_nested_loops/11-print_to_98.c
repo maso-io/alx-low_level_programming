@@ -10,10 +10,12 @@ void print_to_98(int n)
 {
 	int tmp = n;
 
-	while (tmp < 99)
+	while (tmp != 98)
 	{
-		if (tmp < 0)
+		if (tmp < 98)
 		{
+			if (tmp < 0)
+			{
 			if (tmp > -10)
 			{
 				_putchar('-');
@@ -24,6 +26,7 @@ void print_to_98(int n)
 				_putchar('-');
 				_putchar('0' + (tmp * -1) / 10);
 				_putchar('0' + (tmp * -1) % 10);
+			}
 			}
 		}
 		else
@@ -39,14 +42,23 @@ void print_to_98(int n)
 			}
 		}
 		/* increment the given value */
-		tmp++;
-		/* check whether to print last comma */
-		if (tmp > 98)
+			tmp++;
+		}
+		else
 		{
-			_putchar('\n');
-			continue;
+			_putchar('0' + tmp / 100);
+			_putchar('0' + (tmp % 100) / 10);
+			_putchar('0' + ((tmp % 100) / 10) % 10);
+			tmp--;
 		}
 		_putchar(',');
 		_putchar(' ');
 	}
+	if (tmp == 98)
+	{
+		_putchar('0' + 9);
+		_putchar('0' + 8);
+		_putchar('\n');
+	}
+
 }
