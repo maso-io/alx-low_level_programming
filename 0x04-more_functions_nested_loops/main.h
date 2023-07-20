@@ -1,6 +1,8 @@
-#ifndef MAIN_H 
+#ifndef MAIN_H
 #define MAIN_H
 
+/* prints a square */
+void print_square(int size);
 /* prints a diagonal line in terminal */
 void print_diagonal(int n);
 /* prints straight line in terminal */
@@ -18,6 +20,6 @@ int mul(int a, int b);
 /* checks if character is a digit */
 int _isdigit(int c);
 /* checks for uppercase character */
-int _isupper(int c);int _isupper(int c);
+int _isupper(int c);
 
 #endif
