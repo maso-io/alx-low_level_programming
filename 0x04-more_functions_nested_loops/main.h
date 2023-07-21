@@ -1,6 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+/* prints an integer */
+void print_number(int n);
+/* prints a triangle */
+void print_triangle(int size);
 /* prints a square */
 void print_square(int size);
 /* prints a diagonal line in terminal */

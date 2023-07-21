@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * print_sqaure - Prints a suqare
- * @size: Size of the square you want
+ * print_square - Prints the sqaure
+ * @size: Size of the square
  *
  * Return: void
  */
 
-void print_sqaure(int size)
+void print_square(int size)
 {
 	int i, j, tmp;
 
