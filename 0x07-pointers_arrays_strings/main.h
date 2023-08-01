@@ -1,5 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
+#include <stddef.h>
+
 /* fills memory with constant byte */
 char *_memset(char *s, char b, unsigned int n);
 /* copies memory area */
