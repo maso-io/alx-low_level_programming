@@ -13,5 +13,15 @@ int _strlen(char *s);
 void _puts(char *str);
 /* prints a string in reverse */
 void print_rev(char *s);
+/* reverses a string */
+void rev_string(char *s);
+/* prints every other character */
+void puts2(char *str);
+/* prints half a string */
+void puts_half(char *str);
+/* prints n elements of an integer array */
+void print_array(int *a, int n);
+/* copies the string pointed to by src */
+char *_strcpy(char *dest, char *src);
 
 #endif
