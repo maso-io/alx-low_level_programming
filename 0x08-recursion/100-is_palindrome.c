@@ -14,12 +14,12 @@ int palindrome(char *s, int index)
 	len = 0;
 	for (i = 0; s[i] != '\0'; i++)
 		len++;
-	if (len == 0 || len == 1)
+	if (((len / 2) == 0 && *s == *(s + len - index)) ||
+		((len / 2) == 1 && *s == *(s + len - index)))
 		return (1);
-	if (*s == *(s - len - index))
+	if (*s == *(s + len - index))
 		return (palindrome(++s, index + 1));
-	else
-		return (0);
+	return (0);
 }
 
 /**
@@ -31,8 +31,10 @@ int palindrome(char *s, int index)
 
 int is_palindrome(char *s)
 {
+	char *p;
+
+	p = s;
 	if (s == NULL)
 		return (0);
-	else
-		return (palindrome(s, 1));
+	return (palindrome(p, 1));
 }
