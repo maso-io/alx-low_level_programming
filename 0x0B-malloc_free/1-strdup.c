@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strdup - returns pointer to a duplication of string
@@ -11,11 +12,14 @@ char *_strdup(char *str)
 {
 	if (str != NULL)
 	{
-		int i;
+		int i, n;
 		char *p;
 
+		i = 0, n = 0;
+		for (i = 0; str[i] != '\0'; i++)
+			n++;
 		i = 0;
-		p = (char *)malloc(sizeof(str));
+		p = (char *)malloc((n + 1) * sizeof(char));
 		if (p != NULL)
 		{
 			while (*str != '\0')
