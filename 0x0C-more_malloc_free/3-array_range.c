@@ -19,6 +19,8 @@ int *array_range(int min, int max)
 		count++;
 	min_val = min;
 	mem = (int *)malloc(count * sizeof(int));
+	if (mem == NULL)
+		return (NULL);
 	for (i = 0; min_val <= max; i++, min_val++)
 		*(mem + i) = min_val;
 	return (mem);

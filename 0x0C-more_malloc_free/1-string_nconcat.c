@@ -17,6 +17,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		if (s1 != NULL)
 			return (s1);
+		if (s1 == NULL && s2 == NULL)
+			return (NULL);
 		if (s1 == NULL)
 		{
 			len_s1 = 0;
@@ -48,7 +50,7 @@ char *allocate(char *s1, char *s2, unsigned int len1, unsigned int len2)
 	unsigned int i, j;
 
 	j = 0;
-	mem = (char *)malloc(len1 + len2);
+	mem = (char *)malloc(len1 + len2 + 1);
 	if (mem == NULL)
 		return (NULL);
 	for (i = 0; i < len1 + len2 + 1; i++, j++)
