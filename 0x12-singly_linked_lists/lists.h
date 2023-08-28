@@ -26,4 +26,10 @@ void _putchar(char c);
 size_t print_list(const list_t *h);
 /* returns number of nodes in a list_t */
 size_t list_len(const list_t *h);
+/* adds a new node to the begining of a list */
+list_t *add_node(list_t **head, const char *str);
+/* add a new node to the end of a list node */
+list_t *add_node_end(list_t **head, const char *str);
+/* frees a linked list */
+void free_list(list_t *head);
 #endif
