@@ -1,25 +1,21 @@
 #include "main.h"
+#include <string.h>
 /**
- * palindrome - checks if palindrome
- * @s: string
- * @index: 'back' index
+ * palindrome_check - recursive check if char's are equal
+ * @s: string to check
+ * @start: start index of string
+ * @end: end index of string
  *
  * Return: 1 (sucess), otherwise 0
  */
 
-int palindrome(char *s, int index)
+int palindrome_check(char *s, int start, int end)
 {
-	int i, len;
-
-	len = 0;
-	for (i = 0; s[i] != '\0'; i++)
-		len++;
-	if (((len / 2) == 0 && *s == *(s + len - index)) ||
-		((len / 2) == 1 && *s == *(s + len - index)))
+	if (start >= end)
 		return (1);
-	if (*s == *(s + len - index))
-		return (palindrome(++s, index + 1));
-	return (0);
+	if (s[start] != s[end])
+		return (0);
+	return (palindrome_check(s, start + 1, end - 1));
 }
 
 /**
@@ -31,10 +27,10 @@ int palindrome(char *s, int index)
 
 int is_palindrome(char *s)
 {
-	char *p;
+	int length;
 
-	p = s;
+	length = strlen(s);
 	if (s == NULL)
 		return (0);
-	return (palindrome(p, 1));
+	return (palindrome_check(s, 0, length - 1));
 }
