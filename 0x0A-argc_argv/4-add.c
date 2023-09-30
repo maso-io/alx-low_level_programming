@@ -18,15 +18,18 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 	for (i = 1; i < argc; i++)
 	{
-		if (!atoi(argv[i]))
+		int tmp;
+
+		tmp = atoi(argv[i]);
+		if (!tmp)
 		{
 			printf("Error\n");
 			return (1);
 		}
-		if (atoi(argv[i]) < 0)
-			sum += (atoi(argv[i]) * -1);
+		if (tmp < 0)
+			sum += (tmp * 1);
 		else
-			sum += atoi(argv[i]);
+			sum += (tmp);
 	}
 	if (sum > 0)
 		printf("%d\n", sum);
