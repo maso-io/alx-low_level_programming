@@ -5,7 +5,7 @@
  * @ac: argument count
  * @av: argument vector
  *
- * Returns: returns pointer to a new string, or NULL if failure
+ * Return: returns pointer to a new string, or NULL if failure
  */
 
 char *argstostr(int ac, char **av)
@@ -25,11 +25,13 @@ char *argstostr(int ac, char **av)
 		str = (char *)realloc(str, ((len_t + 1) * sizeof(char)));
 		if (!str)
 			return (NULL);
-		for (len = 0, k = len_t; av[i][len] != '\0'; len++, k--)
+		k = len;
+		for (len = 0; av[i][len] != '\0'; len++, k--)
 		{
 			*(str + len_t - k) = av[i][len];
 		}
 		*(str + len_t + k) = '\n';
+		len_t++;
 	}
-	return (NULL);
+	return (str);
 }
