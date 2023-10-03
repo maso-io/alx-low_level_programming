@@ -25,7 +25,7 @@ char *_strdup(char *str);
 char *str_concat(char *s1, char *s2);
 
 /* returns a pointer to a 2_D array of integers */
-int **alloc_grid(int width, int height);
+int **alloc_grid(int, int);
 
 /* function that free a 2D array allocated with malloc */
 void free_grid(int **grid, int height);
