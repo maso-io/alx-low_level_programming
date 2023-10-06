@@ -9,10 +9,13 @@
  */
 uint len(char *str)
 {
-	uint n = 0;
+	uint n;
 
-	if (!str)
-		return (-1);
+	if (str == NULL)
+	{
+		str = "";
+		return (0);
+	}
 	for (n = 0; str[n] != '\0'; n++)
 		continue;
 	return (n);
@@ -29,47 +32,30 @@ uint len(char *str)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *data;
-	uint len1, len2, bus;
+	uint len1, len2, i;
 
 	len1 = len(s1);
 	len2 = len(s2);
-	if (n >= len2 && (int)len2 != -1)
+
+	printf("-1- %d\n", len1);
+	printf("-2- %d\n", len2);
+	printf("-n- %d\n", n);
+	if (n > len2)
 	{
 		data = (char *)malloc(len1 + len2 - 1);
 	}
 	else
 	{
-		if ((int)len1 == -1 && (int)len2 != -1)
-		{
-			len1 = 0;
-			len2 = n;
-			data = (char *)malloc(len2);
-		}
-		else if ((int)len2 == -1 && (int)len1 != -1)
-		{
-			len2 = 0;
-			data = (char *)malloc(len1);
-		}
-		else if ((int)len1 == -1 && (int)len2 == -1)
-		{
-			data = NULL;
-		}
-		else
-		{
-			len2 = n;
-			data = (char *)malloc(len1 + len2);
-		}
+		len2 = n;
+		data = (char *)malloc(len1 + len2);
 	}
-	if (!data)
+	if (!data || (len1 == 0 && len2 == 0))
 		return (NULL);
-	for (bus = 0; bus <= len1 + len2; bus++)
-	{
-		if (bus < len1 && len1 != 0)
-			data[bus] = s1[bus];
-		else if (bus < len1 + len2 && len2 != 0)
-			data[bus] = s2[bus - len1];
-		else
-			data[bus] = '\0';
-	}
+	for (i = 0; i < len1; i++)
+		data[i] = s1[i];
+	for (i = 0; i < len2; i++)
+		data[len1 + i] = s2[i];
+	data[len1 + len2] = '\0';
+
 	return (data);
 }
