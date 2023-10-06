@@ -42,14 +42,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	printf("-n- %d\n", n);
 	if (n > len2)
 	{
-		data = (char *)malloc(len1 + len2 - 1);
+		data = (char *)malloc(len1 + len2 + 1);
 	}
 	else
 	{
 		len2 = n;
 		data = (char *)malloc(len1 + len2);
 	}
-	if (!data || (len1 == 0 && len2 == 0))
+	if (!data)
 		return (NULL);
 	for (i = 0; i < len1; i++)
 		data[i] = s1[i];
