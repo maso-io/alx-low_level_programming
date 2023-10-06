@@ -5,6 +5,8 @@
 #include <stddef.h>
 /* for use of malloc, calloc, realloc */
 #include <stdlib.h>
+/* for use of write */
+#include <unistd.h>
 
 /* redefine reference to unsigned int */
 typedef unsigned int uint;
