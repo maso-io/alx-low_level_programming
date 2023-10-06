@@ -15,11 +15,11 @@ void *_calloc(uint nmemb, uint size)
 
 	if (nmemb <= 0 || size <= 0)
 		return (NULL);
-	memory = (char *)malloc(nmemb * size);
+	memory = malloc(nmemb * size);
 	if (!memory)
 		return (NULL);
-	for (i = 0; i <= nmemb; i++)
-		*(memory + i) = '\0';
+	for (i = 0; i <= (nmemb * size); i++)
+		*(memory + i) = 0;
 
-	return (memory);
+	return ((void *)memory);
 }

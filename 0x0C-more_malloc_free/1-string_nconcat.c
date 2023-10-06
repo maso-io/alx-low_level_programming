@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * len - returns lenght of string
@@ -32,32 +33,43 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	len1 = len(s1);
 	len2 = len(s2);
-	if (n >= len2)
-		data = (char *)malloc(len1 + len2);
+	if (n >= len2 && (int)len2 != -1)
+	{
+		data = (char *)malloc(len1 + len2 - 1);
+	}
 	else
 	{
-		if ((int)len2 != -1)
+		if ((int)len1 == -1 && (int)len2 != -1)
 		{
+			len1 = 0;
 			len2 = n;
-			data = (char *)malloc(len1 + len2);
+			data = (char *)malloc(len2);
 		}
-		else
+		else if ((int)len2 == -1 && (int)len1 != -1)
 		{
 			len2 = 0;
 			data = (char *)malloc(len1);
+		}
+		else if ((int)len1 == -1 && (int)len2 == -1)
+		{
+			data = NULL;
+		}
+		else
+		{
+			len2 = n;
+			data = (char *)malloc(len1 + len2);
 		}
 	}
 	if (!data)
 		return (NULL);
 	for (bus = 0; bus <= len1 + len2; bus++)
 	{
-		if (bus < len1)
+		if (bus < len1 && len1 != 0)
 			data[bus] = s1[bus];
-		else if (bus < len1 + len2)
+		else if (bus < len1 + len2 && len2 != 0)
 			data[bus] = s2[bus - len1];
 		else
 			data[bus] = '\0';
 	}
-
 	return (data);
 }
