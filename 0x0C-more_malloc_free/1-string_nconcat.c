@@ -37,9 +37,6 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	len1 = len(s1);
 	len2 = len(s2);
 
-	printf("-1- %d\n", len1);
-	printf("-2- %d\n", len2);
-	printf("-n- %d\n", n);
 	if (n > len2)
 	{
 		data = (char *)malloc(len1 + len2 + 1);
@@ -47,7 +44,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	else
 	{
 		len2 = n;
-		data = (char *)malloc(len1 + len2);
+		data = (char *)malloc(len1 + len2 + 1);
 	}
 	if (!data)
 		return (NULL);
