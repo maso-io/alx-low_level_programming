@@ -1,6 +1,37 @@
 #include "dog.h"
 
 /**
+ * _strlen - calculate the lenght of a string
+ * @str: string to calculate length of
+ *
+ * Return: integer length
+ */
+int _strlen(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		continue;
+	return (i + 1);
+}
+/**
+ * _strcpy - copies string
+ * @s1: string to copy into
+ * @s2: string to copy from
+ */
+void _strcpy(char *s1, char *s2)
+{
+	while (*s2 != '\0')
+	{
+		*s1 = *s2;
+		s1++;
+		s2++;
+	}
+	*s1 = '\0';
+}
+
+
+/**
  * new_dog - creates a new dog
  * @name: name of dog
  * @age: age of dog
@@ -10,18 +41,15 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int i;
 	dog_t *dog;
 
 	dog = (dog_t *)malloc(sizeof(dog_t));
 	if (!dog)
 		return (NULL);
-	dog->name = (char *)malloc(sizeof(name));
+	dog->name = (char *)malloc(sizeof(name) * _strlen(name));
 	if (dog->name)
 	{
-		for (i = 0; name[i] != '\0'; i++)
-			dog->name[i] = name[i];
-		dog->name[i] = name[i];
+		_strcpy(dog->name, name);
 	}
 	else
 	{
@@ -32,12 +60,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 		dog->age = age;
 	else
 		return (NULL);
-	dog->owner = (char *)malloc(sizeof(owner));
+	dog->owner = (char *)malloc(sizeof(name) * _strlen(owner));
 	if (dog->owner)
 	{
-		for (i = 0; owner[i] != '\0'; i++)
-			dog->owner[i] = owner[i];
-		dog->owner[i] = owner[i];
+		_strcpy(dog->owner, owner);
 	}
 	else
 	{
