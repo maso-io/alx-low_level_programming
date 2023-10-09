@@ -12,12 +12,9 @@ void print_dog(dog_t *d)
 		printf("Name: (nil)\n");
 	else
 		printf("Name: %s\n", d->name);
-	if (!d->age)
-		printf("(nil)\n");
-	else
-		printf("Age: %f\n", d->age);
+	printf("Age: %6f\n", d->age);
 	if (!d->owner)
-		printf("(nil)\n");
+		printf("Owner: (nil)\n");
 	else
 		printf("Owner: %s\n", d->owner);
 }
