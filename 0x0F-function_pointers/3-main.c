@@ -1,22 +1,5 @@
 #include "3-calc.h"
 /**
- * _strlen - returns the length of a string
- * @s: string
- *
- * Return: length of a string
- */
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (*s != '\0')
-	{
-		s++;
-		i++;
-	}
-	return (i);
-}
-/**
  * main - run calculator program
  * @argc: argument count
  * @argv: argument vector
@@ -42,10 +25,14 @@ int main(int argc, char **argv)
 			*argv[2] == '%'
 		)
 	{
+		if ((*argv[2] == '*' || *argv[2] == '/') && (atoi(argv[3]) == 0))
+		{
+			printf("Error\n");
+			exit(100);
+		}
 		fp = get_op_func(argv[2]);
 		res = fp(atoi(argv[1]), atoi(argv[3]));
 		printf("%d\n", res);
-
 	}
 	else
 	{
