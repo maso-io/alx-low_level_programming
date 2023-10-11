@@ -1,12 +1,12 @@
 #include "3-calc.h"
 /**
- * get_of_func - selects the correct function to perfom the operation asked
+ * get_op_func - selects the correct function to perfom the operation asked
  * @s: string with the operation to perform
  *
  * Return: function that peforms the operation asked for
  */
 
-int (*get_of_func(char *s))(int, int)
+int (*get_op_func(char *s))(int, int)
 {
 	op_t ops[] = {
 		{"+", op_add},

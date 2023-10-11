@@ -1,5 +1,21 @@
 #include "3-calc.h"
-#include <stdio.h>
+/**
+ * _strlen - returns the length of a string
+ * @s: string
+ *
+ * Return: length of a string
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (*s != '\0')
+	{
+		s++;
+		i++;
+	}
+	return (i);
+}
 /**
  * main - run calculator program
  * @argc: argument count
@@ -10,39 +26,37 @@
  */
 int main(int argc, char **argv)
 {
-	int i, res;
+	int res;
 	int (*fp)(int, int);
-	char msg[7] = {'E', 'r', 'r', 'o', 'r', '\n', '\0'};
 
 	if (argc < 4)
 	{
-		while (i < 6)
-		{
-			_putchar(msg[i]);
-			i++;
-		}
+		printf("Error\n");
 		exit(98);
 	}
 	if (
-			*argv[2] != '+' ||
-			*argv[2] != '-' ||
-			*argv[2] != '*' ||
-			*argv[2] != '/' ||
-			*argv[2] != '%'
+			(
+			*argv[2] == '+' ||
+			*argv[2] == '-' ||
+			*argv[2] == '*' ||
+			*argv[2] == '/' ||
+			*argv[2] == '%'
+			) &&
+			(
+			_strlen(argv[2]) == 1
+			)
 	   )
 	{
-		int i;
-		char msg[7] = {'E', 'r', 'r', 'o', 'r', '\n', '\0'};
+		fp = get_op_func(argv[2]);
+		res = fp(atoi(argv[1]), atoi(argv[3]));
+		printf("%d\n", res);
 
-		while (i < 6)
-		{
-			_putchar(msg[i]);
-			i++;
-		}
+	}
+	else
+	{
+		printf("Error\n");
 		exit(99);
 	}
-	fp = get_op_func(argv[2]);
-	res = fp(atoi(argv[1]), atoi(argv[3]));
-	printf("%d\n", res);
+
 	return (0);
 }

@@ -9,7 +9,7 @@
 int op_add(int a, int b)
 {
 	return (a + b);
-};
+}
 /**
  * op_sub - subtracts two integers together
  * @a: first integer
@@ -20,7 +20,7 @@ int op_add(int a, int b)
 int op_sub(int a, int b)
 {
 	return (a - b);
-};
+}
 /**
  * op_mul - multiplies two integers together
  * @a: first integer
@@ -31,7 +31,7 @@ int op_sub(int a, int b)
 int op_mul(int a, int b)
 {
 	return (a * b);
-};
+}
 /**
  * op_div - finds the quotient two integers together
  * @a: first integer
@@ -41,13 +41,9 @@ int op_mul(int a, int b)
  */
 int op_div(int a, int b)
 {
-	int i;
-	char msg[7] = {'E', 'r', 'r', 'o', 'r', '\n', '\0'};
-
 	if (b == 0)
 	{
-		for (i = 0; i < 6; i++)
-			_putchar(msg[i])
+		printf("Error\n");
 		exit(100);
 	}
 	return (a / b);
@@ -61,13 +57,9 @@ int op_div(int a, int b)
  */
 int op_mod(int a, int b)
 {
-	int i;
-	char msg[7] = {'E', 'r', 'r', 'o', 'r', '\n', '\0'};
-
 	if (b == 0)
 	{
-		for (i = 0; i < 6; i++)
-			_putchar(msg[i])
+		printf("Error\n");
 		exit(100);
 	}
 	return (a % b);
