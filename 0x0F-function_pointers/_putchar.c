@@ -1,12 +1,20 @@
 #include "function_pointers.h"
 #include <unistd.h>
 /**
- * _putchar - writes one character to the stdout
- * @c: character to write
+ * _prints - writes i characters to the stdout
+ * @s: characters to write
  *
- * Return: 1 (number of byte written) , -1 on error
+ * Return: i (number of bytes written) , -1 on error
  */
-int _putchar(char c)
+int _prints(char *s)
 {
-	return (write(1, &c, 1));
+	int i = 0;
+
+	if (s)
+		for (; *s != '\0'; s++, i++)
+			write(1, s, 1);
+	else
+		return (-1);
+
+	return (i);
 }
