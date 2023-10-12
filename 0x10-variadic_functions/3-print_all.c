@@ -23,8 +23,9 @@ void print_(char c, va_list ap)
 	case 's':
 		str = va_arg(ap, char *);
 		if (!str)
-			printf("nil\n");
-		printf("%s, ", str);
+			printf("(nil)");
+		else
+			printf("%s, ", str);
 		break;
 	default:
 		break;
@@ -54,8 +55,9 @@ void print_all_last(char c, va_list ap)
 	case 's':
 		str = va_arg(ap, char *);
 		if (!str)
-			printf("nil\n");
-		printf("%s\n", str);
+			printf("(nil)\n");
+		else
+			printf("%s\n", str);
 		break;
 	default:
 		break;
