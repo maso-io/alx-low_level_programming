@@ -24,7 +24,7 @@ void print_(char c, va_list ap)
 		str = va_arg(ap, char *);
 		if (!str)
 		{
-			printf("(nil)\n");
+			printf("(nil), ");
 			break;
 		}
 		printf("%s, ", str);

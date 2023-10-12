@@ -1,11 +1,11 @@
 #include "variadic_functions.h"
 #include <stdio.h>
+
 /**
  * print_strings - function that prints strings
  * @separator: used as sep btween strings
  * @n: number of strings passed
  */
-
 void print_strings(const char *separator, const u_int n, ...)
 {
 	u_int i;
@@ -23,7 +23,7 @@ void print_strings(const char *separator, const u_int n, ...)
 			if (i == n - 1)
 				printf("%s\n", str);
 			else
-				printf("%s ", str);
+				printf("%s", str);
 		}
 		va_end(ap);
 		return;
