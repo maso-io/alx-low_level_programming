@@ -14,8 +14,12 @@ void print_numbers(const char *separator, const u_int n, ...)
 	if (!separator)
 	{
 		for (i = 0; i < n; i++)
-			printf("%d ", va_arg(ap, int));
-		printf("\n");
+		{
+			if (i == n - 1)
+				printf("%d\n", va_arg(ap, int));
+			else
+				printf("%d", va_arg(ap, int));
+		}
 		va_end(ap);
 		return;
 	}
@@ -24,7 +28,7 @@ void print_numbers(const char *separator, const u_int n, ...)
 		if (i == n - 1)
 			printf("%d\n", va_arg(ap, int));
 		else
-			printf("%d%s ", va_arg(ap, int), separator);
+			printf("%d%s", va_arg(ap, int), separator);
 	}
 	va_end(ap);
 }

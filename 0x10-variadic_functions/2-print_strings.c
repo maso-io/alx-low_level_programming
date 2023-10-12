@@ -23,7 +23,7 @@ void print_strings(const char *separator, const u_int n, ...)
 			if (i == n - 1)
 				printf("%s\n", str);
 			else
-				printf("%s ", str);
+				printf("%s", str);
 		}
 		va_end(ap);
 		return;
@@ -38,7 +38,7 @@ void print_strings(const char *separator, const u_int n, ...)
 			if (i == n - 1)
 				printf("%s\n", str);
 			else
-				printf("%s%s ", str, separator);
+				printf("%s%s", str, separator);
 		}
 	}
 	va_end(ap);

@@ -79,27 +79,7 @@ void print_all(const char * const format, ...)
 		x++;
 	while (i < x - 1)
 	{
-		switch (c)
-		{
-		case 'c':
-			printf("%c, ", (char)va_arg(ap, int));
-			break;
-		case 'i':
-			printf("%d, ", va_arg(ap, int));
-			break;
-		case 'f':
-			printf("%f, ", (float) va_arg(ap, double));
-			break;
-		case 's':
-			str = va_arg(ap, char *);
-			if (!str)
-				printf("(nil), ");
-			else
-				printf("%s, ", str);
-			break;
-		default:
-			break;
-		}
+		print_(format[i], ap);
 		i++;
 	}
 	print_all_last(format[i], ap);
