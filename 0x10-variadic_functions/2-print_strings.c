@@ -15,8 +15,11 @@ void print_strings(const char *separator, const u_int n, ...)
 	va_start(ap, n);
 	if (!separator)
 	{
+		str = va_arg(ap, char *);
+		if (!str)
+			str = "(nil)";
 		for (i = 0; i < n; i++)
-			printf("%s ", va_arg(ap, char *));
+			printf("%s ", str);
 		printf("\n");
 		va_end(ap);
 		return;
@@ -31,7 +34,7 @@ void print_strings(const char *separator, const u_int n, ...)
 			if (i == n - 1)
 				printf("%s\n", str);
 			else
-				printf("%s%s", str, separator);
+				printf("%s%s ", str, separator);
 		}
 	}
 	va_end(ap);

@@ -23,7 +23,7 @@ void print_(char c, va_list ap)
 	case 's':
 		str = va_arg(ap, char *);
 		if (!str)
-			printf("(nil)");
+			printf("(nil), ");
 		else
 			printf("%s, ", str);
 		break;
