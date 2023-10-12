@@ -19,8 +19,12 @@ void print_strings(const char *separator, const u_int n, ...)
 		if (!str)
 			str = "(nil)";
 		for (i = 0; i < n; i++)
-			printf("%s ", str);
-		printf("\n");
+		{
+			if (i == n - 1)
+				printf("%s\n", str);
+			else
+				printf("%s ", str);
+		}
 		va_end(ap);
 		return;
 	}
