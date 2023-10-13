@@ -20,11 +20,9 @@ void print_strings(const char *separator, const u_int n, ...)
 			str = va_arg(ap, char *);
 			if (!str)
 				str = "(nil)";
-			if (i == n - 1)
-				printf("%s\n", str);
-			else
-				printf("%s", str);
+			printf("%s", str);
 		}
+		printf("\n");
 		va_end(ap);
 		return;
 	}
@@ -36,10 +34,11 @@ void print_strings(const char *separator, const u_int n, ...)
 			if (!str)
 				str = "(nil)";
 			if (i == n - 1)
-				printf("%s\n", str);
+				printf("%s", str);
 			else
 				printf("%s%s", str, separator);
 		}
+		printf("\n");
 	}
 	va_end(ap);
 }
