@@ -46,22 +46,22 @@ void print_all_last(char c, va_list ap)
 	switch (c)
 	{
 	case 'c':
-		printf("%c\n", (char)va_arg(ap, int));
+		printf("%c", (char)va_arg(ap, int));
 		break;
 	case 'i':
-		printf("%d\n", va_arg(ap, int));
+		printf("%d", va_arg(ap, int));
 		break;
 	case 'f':
-		printf("%f\n", (float) va_arg(ap, double));
+		printf("%f", (float) va_arg(ap, double));
 		break;
 	case 's':
 		str = va_arg(ap, char *);
 		if (!str)
 		{
-			printf("(nil)\n");
+			printf("(nil)");
 			break;
 		}
-		printf("%s\n", str);
+		printf("%s", str);
 		break;
 	default:
 		break;
@@ -79,7 +79,7 @@ void print_all(const char * const format, ...)
 
 	i = 0, x = 0;
 	va_start(ap, format);
-	while (format[x] != '\0')
+	while (format && format[x] != '\0')
 		x++;
 	while (i < x - 1)
 	{
@@ -87,5 +87,6 @@ void print_all(const char * const format, ...)
 		i++;
 	}
 	print_all_last(format[i], ap);
+	printf("\n");
 	va_end(ap);
 }
