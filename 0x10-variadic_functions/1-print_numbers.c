@@ -10,9 +10,9 @@ void print_numbers(const char *separator, const u_int n, ...)
 	u_int i;
 	va_list ap;
 
-	if (n > 0)
-	{
 	va_start(ap, n);
+	if (n == 0)
+		return;
 	if (!separator)
 	{
 		for (i = 0; i < n; i++)
@@ -33,5 +33,4 @@ void print_numbers(const char *separator, const u_int n, ...)
 			printf("%d%s", va_arg(ap, int), separator);
 	}
 	va_end(ap);
-	}
 }
