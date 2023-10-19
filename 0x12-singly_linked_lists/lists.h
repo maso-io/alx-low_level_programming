@@ -1,7 +1,7 @@
 #ifndef _LIST_T_
 #define _LIST_T_
 
-/* NULL definition */
+/* NULL, size_t definitions */
 #include <stddef.h>
 /* write() def */
 #include <unistd.h>

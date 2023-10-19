@@ -1,6 +1,4 @@
 #include "lists.h"
-/* duplicates a string */
-char *_strdup(const char *s);
 /* returns the length of a string */
 u_int _strlen(const char *s);
 /**
@@ -20,7 +18,7 @@ list_t *add_node(list_t **head, const char *str)
 	node = (list_t *)malloc(sizeof(list_t));
 	if (!node)
 		return (NULL);
-	node->str = _strdup(str);
+	node->str = strdup(str);
 	if (!node->str)
 		return (NULL);
 	node->len = _strlen(str);
@@ -44,24 +42,4 @@ u_int _strlen(const char *s)
 		continue;
 	return (i);
 }
-/**
- * _strdup - creates a duplicate of a string
- * @s: string to duplicate
- *
- * Return: pointer to newly duplicated string
- */
-char *_strdup(const char *s)
-{
-	int i;
-	char *d_s;
 
-	if (!s)
-		return (NULL);
-	d_s = (char *)malloc(sizeof(char) * _strlen(s));
-	if (!d_s)
-		return (NULL);
-	for (i = 0; s[i] != '\0'; i++)
-		d_s[i] = s[i];
-	d_s[i] = '\0';
-	return (d_s);
-}
