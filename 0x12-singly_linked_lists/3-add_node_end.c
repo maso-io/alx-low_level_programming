@@ -19,7 +19,10 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (NULL);
 	node->str = strdup(str);
 	if (!node->str)
+	{
+		free(node);
 		return (NULL);
+	}
 	for (c = 0; str[c] != '\0'; c++)
 		continue;
 	node->len = c;
