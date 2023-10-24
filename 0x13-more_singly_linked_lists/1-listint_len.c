@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
- * listint_t - calculates total of all elements of a listint_t list
+ * listint_len - calculates total of all elements of a listint_t list
  * @h: reference cpy of the head node
  *
  * Return: the number of elements in a list
