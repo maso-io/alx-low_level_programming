@@ -9,6 +9,7 @@ int set_bit(ul_int *n, u_int index)
 {
 	ul_int num;
 	ul_int mask;
+
 	if (index > sizeof(u_int) * 8 || !n)
 		return (-1);
 	mask = 1;
