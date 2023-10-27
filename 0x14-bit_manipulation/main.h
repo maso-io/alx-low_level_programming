@@ -1,6 +1,7 @@
 #ifndef _MAIN_
 #define _MAIN_
 
+#include <unistd.h>
 #include <stddef.h>
 #include <stdlib.h>
 
@@ -8,6 +9,13 @@
  * u_int - Typedef for unsigned int
  */
 typedef unsigned int u_int;
+/**
+ * ul_int - Typedef for unsigned long int
+ */
+typedef unsigned long int ul_int;
+
+/* writes character to stdout */
+int _putchar(char);
 
 /* converts a binary number to an unsigned int */
 u_int binary_to_uint(const char *b);
