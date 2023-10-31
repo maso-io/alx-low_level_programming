@@ -1,4 +1,20 @@
 #include "main.h"
+
+/**
+ * slen - string length
+ * @s: string
+ *
+ * Return: length
+ */
+
+int slen(char *s)
+{
+	if (!*s)
+		return (0);
+	s++;
+	return (1 + slen(s));
+}
+
 /**
  * create_file - creates a file
  * @filename: name of the file
@@ -29,10 +45,11 @@ int create_file(const char *filename, char *text_content)
 		else
 			return (-1);
 	}
-	for (chars = 0; text_content[chars] != '\0'; chars++)
+	chars = write(fd, text_content, slen(text_content));
+	if (chars == EOF | chars != slen(text_content))
 	{
-		if (write(fd, &text_content[chars], 1) == EOF)
-			return (-1);
+		close(fd);
+		return (-1);
 	}
 	close(fd);
 	return (1);
