@@ -20,7 +20,7 @@ ssize_t read_textfile(const char *filename, size_t letters);
 /* creates a function that creates a file */
 int create_file(const char *filename, char *text_content);
 /* function that appends text at the end of a file */
-int append_to_file(const char *filename, char *text_content);
+int append_text_to_file(const char *filename, char *text_content);
 /* copies the contents of a file to another file */
 /* usage: cp file_from file_to */
 
