@@ -1,6 +1,9 @@
 #ifndef _FILE_MAIN_
 #define	_FILE_MAIN_
 
+/* open */
+#include <sys/types.h>
+#include <sys/stat.h>
 /* malloc */
 #include <stdlib.h>
 /* write */
@@ -9,6 +12,8 @@
 #include <fcntl.h>
 /* FILE definition */
 #include <stdio.h>
+/* errno to specify err type */
+#include <errno.h>
 
 /* reads a text-file and prints it to stdout */
 ssize_t read_textfile(const char *filename, size_t letters);

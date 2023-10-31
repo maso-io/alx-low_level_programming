@@ -1,6 +1,4 @@
 #include "main.h"
-/* calculates the length of a buffer */
-int _strlen(char *buffer);
 /**
  * create_file - creates a file
  * @filename: name of the file
@@ -13,49 +11,29 @@ int _strlen(char *buffer);
  */
 int create_file(const char *filename, char *text_content)
 {
-	int size, fd;
+	int chars, fd;
 
 	if (!filename)
 		return (-1);
-	size = _strlen(text_content);
-	fd = open(filename, O_WRONLY | O_TRUNC);
-	if (fd)
+	if (!text_content)
+		text_content = "";
+	fd = open(filename, O_CREAT | O_EXCL | O_WRONLY, S_IRUSR | S_IWUSR);
+	if (fd < 0)
 	{
-		/* opened file that was existing successfully and kept permission */
-		if (write(fd, text_content, size) != size)
+		if (errno == EEXIST)
 		{
-			close(fd);
-			return (-1);
+			fd = open(filename, O_WRONLY | O_TRUNC);
+			if (fd == EOF)
+				return (-1);
 		}
+		else
+			return (-1);
 	}
-	else
+	for (chars = 0; text_content[chars] != '\0'; chars++)
 	{
-		/* didn't open file */
-		fd = open(filename, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
-		if (fd == -1)
-		{
-			close(fd);
+		if (write(fd, &text_content[chars], 1) == EOF)
 			return (-1);
-		}
-		write(fd, text_content, size);
 	}
 	close(fd);
 	return (1);
-}
-/**
- * _strlen - calculates the length of null terminated string
- * @buffer: string
- *
- * Return: length, 0 if null
- */
-int _strlen(char *buffer)
-{
-	int i;
-
-	if (!buffer)
-		return (0);
-	i = 0;
-	while (buffer[i] != '\0')
-		i++;
-	return (i);
 }
