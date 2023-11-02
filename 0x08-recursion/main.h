@@ -21,5 +21,7 @@ int _sqrt_recursion(int n);
 int is_prime_number(int n);
 /* checks if string is a palindrome */
 int is_palindrome(char *s);
+/* compares two strings */
+int wildcmp(char *s1, char *s2);
 
 #endif
