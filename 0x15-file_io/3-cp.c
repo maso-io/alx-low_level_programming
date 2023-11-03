@@ -92,13 +92,13 @@ int copy(int fd_1, int fd_2)
 	int size;
 	char *buffer;
 	int fd_res;
-	int flag_r, flag_w;
+	int flag_r, flag_w, end_flag;
 
-	size = 1024, flag_r = 1, flag_w = 1;
+	size = 1024, flag_r = 1, flag_w = 1, end_flag = 1;
 	buffer = (char *)malloc(sizeof(char) * size);
 	if (!buffer)
 		exit(99);
-	while (flag_r && flag_w)
+	while (flag_r && flag_w && end_flag)
 	{
 		if (read(fd_1, buffer, 1024) == EOF)
 		{
@@ -108,6 +108,11 @@ int copy(int fd_1, int fd_2)
 		if (write(fd_2, buffer, 1024) == EOF)
 		{
 			flag_w = 0;
+			continue;
+		}
+		if (buffer[size - 1] != '\0')
+		{
+			end_flag = 0;
 			continue;
 		}
 		size += 1024;
