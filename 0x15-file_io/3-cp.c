@@ -103,17 +103,17 @@ int copy(int fd_1, int fd_2)
 		if (read(fd_1, buffer, 1024) == EOF)
 		{
 			flag_r = 0;
-			continue;
+			break;
 		}
 		if (write(fd_2, buffer, 1024) == EOF)
 		{
 			flag_w = 0;
-			continue;
+			break;
 		}
-		if (buffer[size - 1] != '\0')
+		if (buffer[size - 1] == '\0')
 		{
 			end_flag = 0;
-			continue;
+			break;
 		}
 		size += 1024;
 		buffer = realloc(buffer, sizeof(char) * size);
