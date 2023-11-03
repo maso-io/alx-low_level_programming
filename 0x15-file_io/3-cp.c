@@ -31,8 +31,16 @@ int main(int ac, char *argv[])
 	if (ret == 99)
 		dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", argv[2]);
 
-	close(fds[0]);
-	close(fds[1]);
+	if (close(fds[0]) == EOF)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fds[0]);
+		exit(100);
+	}
+	if (close(fds[1]) == EOF)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fds[1]);
+		exit(100);
+	}
 	free(fds);
 	exit(ret);
 }
@@ -89,23 +97,24 @@ int *open_files(char *argv[])
  */
 int copy(int fd_1, int fd_2)
 {
-	int size;
+	int size, rd;
 	char *buffer;
 	int fd_res;
 	int flag_r, flag_w, end_flag;
 
-	size = 1024, flag_r = 1, flag_w = 1, end_flag = 1;
-	buffer = (char *)malloc(sizeof(char) * size);
+	size = 1, flag_r = 1, flag_w = 1, end_flag = 1, rd = 0;
+	buffer = (char *)malloc(sizeof(char) * (1024 * size));
 	if (!buffer)
 		exit(99);
 	while (flag_r && flag_w && end_flag)
 	{
-		if (read(fd_1, buffer, 1024) == EOF)
+		rd = read(fd_1, buffer, 1024);
+		if (rd == EOF)
 		{
 			flag_r = 0;
 			break;
 		}
-		if (write(fd_2, buffer, 1024) == EOF)
+		if (write(fd_2, buffer, rd) == EOF)
 		{
 			flag_w = 0;
 			break;
@@ -115,8 +124,8 @@ int copy(int fd_1, int fd_2)
 			end_flag = 0;
 			break;
 		}
-		size += 1024;
-		buffer = realloc(buffer, sizeof(char) * size);
+		size++;
+		buffer = realloc(buffer, sizeof(char) * (1024 * size));
 		if (!buffer)
 		{
 			free(buffer);
@@ -128,7 +137,7 @@ int copy(int fd_1, int fd_2)
 	else if (!flag_w)
 		fd_res = 99;
 	else
-		fd_res = 99;
+		fd_res = 0;
 
 	free(buffer);
 	return (fd_res);
