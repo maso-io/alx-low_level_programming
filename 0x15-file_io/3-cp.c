@@ -97,39 +97,40 @@ int *open_files(char *argv[])
  */
 int copy(int fd_1, int fd_2)
 {
-	int size, rd, i;
+	int size, rd;
 	char *buffer;
 	int fd_res;
-	int flag_r, flag_w, end_f;
+	int flag_r, flag_w, end_flag;
 
-	size = 1024, flag_r = 1, flag_w = 1, rd = 0, end_f = 1;
-	buffer = (char *)malloc(sizeof(char) * size);
+	size = 1, flag_r = 1, flag_w = 1, end_flag = 1, rd = 0;
+	buffer = (char *)malloc(sizeof(char) * (1024 * size));
 	if (!buffer)
 		exit(99);
-	while (flag_r && flag_w && end_f)
+	while (flag_r && flag_w && end_flag)
 	{
 		rd = read(fd_1, buffer, 1024);
-		if (rd < 0)
+		if (rd == EOF)
 		{
 			flag_r = 0;
 			break;
 		}
-		for (i = 0; i < rd; i++)
+		if (write(fd_2, buffer, rd) == EOF)
 		{
-			if (write(fd_2, &buffer[i], 1) == EOF)
-			{
-				flag_w = 0;
-				break;
-			}
+			flag_w = 0;
+			break;
 		}
-		end_f = 0;
-		/* buffer = realloc(buffer, sizeof(char) * size) */;
-		/* if (!buffer)
-		 * {
-		 *	free(buffer);
-		 *	exit(99);
-		 * }
-		 */
+		if (buffer[size - 1] == '\0')
+		{
+			end_flag = 0;
+			break;
+		}
+		size++;
+		buffer = realloc(buffer, sizeof(char) * (1024 * size));
+		if (!buffer)
+		{
+			free(buffer);
+			exit(99);
+		}
 	}
 	if (!flag_r)
 		fd_res = 98;
