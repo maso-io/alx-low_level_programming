@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
 /**
@@ -10,23 +13,44 @@
  */
 int main(int argc, char *argv[], char *envp[])
 {
-	int i, len, fd;
+	int lines, i, len_t, fd;
 	char *path;
 
-	fd = open("variable.txt", O_WRONLY | O_CREAT);
+	lines = 1;
+	fd = open("variable.txt", O_WRONLY | O_CREAT, 0777);
 	path = envp[21];
-	len = strlen(envp[21]);
-	for (i = 5; i < len; i++)
+	len_t = strlen(envp[21]);
+	for (i = 5; i < len_t; i++)
 	{
 		if (path[i] == ':')
 		{
 			i++;
-			write(fd, '\n', 1);
-			write(fd, &path[i], 1);
+			lines++;
+			write(fd, "\n", 1);
 		}
 		write(fd, &path[i], 1);
 	}
 	close(fd);
 
-	return (0);
+	FILE *stream;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t nread;
+
+	printf("stream\n");
+	stream =
+		fopen("/home/maso/lin_dir/ALX/I/alx-low_level_programming/simple_shell_concept/variable.txt", O_RDONLY);
+	if (!stream)
+	{
+		perror("fopen");
+		exit(EXIT_FAILURE);
+	}
+	while ((nread = getline(&line, &len, stream)) != EOF)
+	{
+		printf("Retrieved line of length %zu:\n", nread);
+		fwrite(line, nread, 1, stdout);
+	}
+	fclose(stream);
+
+	exit(EXIT_SUCCESS);
 }
