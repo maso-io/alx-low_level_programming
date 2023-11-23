@@ -67,7 +67,6 @@ void print_all_last(char c, va_list ap)
 		break;
 	}
 }
-
 /**
  * print_all - function that prints anything
  * @format: list of types of arguments passed to the argument

@@ -37,9 +37,7 @@ int main(int argc, char *argv[], char *envp[])
 	size_t len = 0;
 	ssize_t nread;
 
-	printf("stream\n");
-	stream =
-		fopen("/home/maso/lin_dir/ALX/I/alx-low_level_programming/simple_shell_concept/variable.txt", O_RDONLY);
+	stream = fopen("variable.txt", "r");
 	if (!stream)
 	{
 		perror("fopen");
@@ -48,7 +46,14 @@ int main(int argc, char *argv[], char *envp[])
 	while ((nread = getline(&line, &len, stream)) != EOF)
 	{
 		printf("Retrieved line of length %zu:\n", nread);
-		fwrite(line, nread, 1, stdout);
+		char lines[nread + 3];
+		strcpy(lines, line);
+		lines[nread - 1] = '/';
+		lines[nread ] = 'l';
+		lines[nread + 1] = 's';
+		lines[nread + 2] = '\n';
+		lines[nread + 3] = '\0';
+		fwrite(lines, nread + 3, 1, stdout);
 	}
 	fclose(stream);
 

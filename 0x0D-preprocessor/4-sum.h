@@ -8,6 +8,6 @@
  *
  * Returns: SUM OF TWO VALUES
  */
-
 #define SUM(X, Y) ((X) + (Y))
+
 #endif /* ends sum */
