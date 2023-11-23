@@ -19,7 +19,7 @@ void print_binary(ul_int n)
 	do {
 		shift++;
 		num >>= 1;
-	} while (num > 1)
+	} while (num > 1);
 	mask <<= shift;
 	num = n;
 	do {
@@ -30,5 +30,5 @@ void print_binary(ul_int n)
 		else
 			return;
 		mask >>= 1;
-	} while (mask)
+	} while (mask);
 }
