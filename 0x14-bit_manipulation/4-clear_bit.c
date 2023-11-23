@@ -14,7 +14,7 @@ int clear_bit(ul_int *n, u_int index)
 		return (-1);
 	mask = 1;
 	mask <<= index;
-	mask =~ mask;
+	mask = ~mask;
 	num = *n;
 	num &= mask;
 	*n = num;
