@@ -16,10 +16,11 @@ void print_binary(ul_int n)
 		_putchar('0');
 		return;
 	}
-	do {
+	while (num > 1)
+	{
 		shift++;
 		num >>= 1;
-	} while (num > 1);
+	}
 	mask <<= shift;
 	num = n;
 	do {
