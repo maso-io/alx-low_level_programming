@@ -21,7 +21,7 @@ int main(int ac, char *argv[])
 
 	if (ac != 3)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	fds = open_files(argv);
@@ -30,9 +30,9 @@ int main(int ac, char *argv[])
 	else
 		ret = *fds;
 	if (ret == 98)
-		dprintf(STDOUT_FILENO, "Error: Can't read from file %s", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s", argv[1]);
 	if (ret == 99)
-		dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 
 	if (close(fds[0]) == EOF)
 	{
@@ -67,7 +67,7 @@ int *open_files(char *argv[])
 	{
 		close(fd_f);
 		close(fd_t);
-		dprintf(STDOUT_FILENO, "Error: Can't read from file %s", file_from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s", file_from);
 		exit(98);
 	}
 	if (errno)
@@ -80,7 +80,7 @@ int *open_files(char *argv[])
 		{
 			close(fd_f);
 			close(fd_t);
-			dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", file_to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			exit(99);
 		}
 	}
