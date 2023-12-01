@@ -75,6 +75,8 @@ int *open_files(char *argv[])
 		if (errno == EEXIST)
 		{
 			fd_t = open(file_to, O_WRONLY | O_TRUNC);
+			if (errno == EACCES)
+				return (99);
 		}
 		else
 		{
@@ -158,3 +160,4 @@ int slen(char *s)
 		return (0);
 	return (1 + slen(++s));
 }
+
