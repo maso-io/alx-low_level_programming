@@ -76,7 +76,7 @@ int *open_files(char *argv[])
 		{
 			fd_t = open(file_to, O_WRONLY | O_TRUNC);
 			if (errno == EACCES)
-				return (99);
+				exit(99);
 		}
 		else
 		{
