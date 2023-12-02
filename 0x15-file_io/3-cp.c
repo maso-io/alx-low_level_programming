@@ -30,7 +30,7 @@ int main(int ac, char *argv[])
 	else
 		ret = *fds;
 	if (ret == 98)
-		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 	if (ret == 99)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 
@@ -168,4 +168,3 @@ int slen(char *s)
 		return (0);
 	return (1 + slen(++s));
 }
-
