@@ -33,6 +33,7 @@ int main(int ac, char *argv[])
 	if (ret == 98)
 	{
 		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		fflush(NULL);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 	}
 	if (ret == 99)
