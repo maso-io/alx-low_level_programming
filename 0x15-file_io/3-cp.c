@@ -30,7 +30,6 @@ int main(int ac, char *argv[])
 	else
 		ret = *fds;
 	if (ret == 98)
-	if (ret == 98)
 	{
 		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		fflush(NULL);
