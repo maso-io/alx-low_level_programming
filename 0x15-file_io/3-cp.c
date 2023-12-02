@@ -81,6 +81,11 @@ int *open_files(char *argv[])
 				exit(99);
 			}
 		}
+		else if (errno == EACCES)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
 		else
 		{
 			close(fd_f);
