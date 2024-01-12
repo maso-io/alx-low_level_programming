@@ -7,16 +7,9 @@ void free_dlistint(dlistint_t *head)
 {
 	dlistint_t *h, *tmp;
 
-	h = head;
 	if (!head)
 		return;
-	/* free going backward */
-	while (h->prev)
-	{
-		tmp = h;
-		h = h->prev;
-		free(tmp);
-	}
+	h = head->prev;
 	/* free going forward */
 	while (head->next)
 	{
@@ -25,4 +18,11 @@ void free_dlistint(dlistint_t *head)
 		free(tmp);
 	}
 	free(head);
+	/* free going backward */
+	while (h)
+	{
+		tmp = h;
+		h = h->prev;
+		free(tmp);
+	}
 }
