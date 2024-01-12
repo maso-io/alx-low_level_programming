@@ -5,5 +5,24 @@
  */
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *tmp
+	dlistint_t *h, *tmp;
+
+	h = head;
+	if (!head)
+		return;
+	/* free going backward */
+	while (h->prev)
+	{
+		tmp = h;
+		h = h->prev;
+		free(tmp);
+	}
+	/* free going forward */
+	while (head->next)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+	free(head);
 }
